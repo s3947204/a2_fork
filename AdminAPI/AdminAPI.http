@@ -1,0 +1,25 @@
+@AdminAPI_HostAddress = http://localhost:5001
+@CustomerController = api/Customer
+
+### Add missing details to customer with id 2100
+PUT {{AdminAPI_HostAddress}}/{{CustomerController}}/Update
+Accept: application/json
+Content-Type: application/json
+
+{
+    "CustomerID": 2100,
+    "Name": "Matthew Bolger",
+    "TFN": "323 232 323",
+    "Address": "123 Fake Street",
+    "City": "Melbourne",
+    "State": "VIC",
+    "PostCode": "3233",
+    "Mobile": "0432 323 322",
+    "Locked": false
+}
+
+### Lock customer with id 2100
+PUT {{AdminAPI_HostAddress}}/{{CustomerController}}/Lock/2100
+Accept: application/json
+
+

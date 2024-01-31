@@ -1,0 +1,29 @@
+﻿.pagination{
+    display: flex;
+    gap: 10px; 
+}
+
+.pagination-container {
+    margin-top: 50px;
+    min-width: 50%;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+}
+
+
+.page-link {
+    padding: 10px 15px;
+    border: 1px solid black;
+    text-decoration: none;
+    color: black;
+}
+
+.page-link:hover {
+    cursor: pointer;
+    background-color: antiquewhite;
+}
+
+.active .page-link{
+    background-color: antiquewhite;
+}

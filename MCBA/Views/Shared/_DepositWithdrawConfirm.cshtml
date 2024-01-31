@@ -1,0 +1,18 @@
+﻿@model DepositViewModel;
+
+<div class="confirm-clump">
+    <div class="confirm-group">
+        <p>Chosen Account:</p>
+        <input readonly asp-for="ChosenAccount" />
+    </div>
+
+    <div class="confirm-group">
+        <p>@Html.DisplayNameFor(x => x.Amount)</p>
+        <input readonly asp-for="Amount" />
+    </div>
+    <div class="confirm-group">
+        <p>@Html.DisplayNameFor(x => x.Comment)</p>
+        <input readonly asp-for="Comment" />
+    </div>
+
+</div>

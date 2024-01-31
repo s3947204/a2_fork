@@ -1,0 +1,26 @@
+﻿@model WithdrawViewModel;
+
+@{
+    ViewData["Title"] = "Withdraw";
+}
+
+<h1>Withdraw</h1>
+
+<form asp-controller="Withdraw" asp-action="Withdraw" method="post">
+    @{
+        await Html.RenderPartialAsync("_DepositWithdrawForm");
+    }
+
+
+    <div class="form-group">
+        <input type="submit" value="Withdraw" class="button" />
+        @Html.ValidationMessage("WithdrawFailed", new { @class = "text-danger" })
+    </div>
+
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

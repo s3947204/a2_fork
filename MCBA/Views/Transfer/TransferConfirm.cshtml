@@ -1,0 +1,45 @@
+﻿@model TransferViewModel
+
+@{
+    ViewData["Title"] = "Confirm";
+}
+
+<h1>Confirm Transfer</h1>
+
+
+<div class="confirm-clump">
+    <div class="confirm-group">
+        <p>Chosen Account:</p>
+        <input readonly asp-for="AccountNumber"/>
+    </div>
+    <div class="confirm-group">
+        <p>Destination Account:</p>
+        <input readonly asp-for="DestinationAccountNumber" />
+    </div>
+
+    <div class="confirm-group">
+        <p>@Html.DisplayNameFor(x => x.Amount)</p>
+        <input readonly asp-for="Amount" />
+    </div>
+    <div class="confirm-group">
+        <p>@Html.DisplayNameFor(x => x.Comment)</p>
+        <input readonly asp-for="Comment" />
+    </div>
+
+</div>
+
+
+<form asp-controller="Transfer" asp-action="TransferConfirmPost" method="post">
+    <div class="button-clump">
+        <a asp-controller="Transfer" asp-action="Transfer" class="back">Back</a>
+        <input class="confirm button" type="submit" value="Confirm" />
+
+    </div>
+
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

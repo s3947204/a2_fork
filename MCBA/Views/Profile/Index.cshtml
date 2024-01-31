@@ -1,0 +1,51 @@
+﻿@model Customer
+
+@{
+    ViewData["Title"] = "Profile";
+}
+
+<h1>Profile</h1>
+
+ <div class="confirm-clump">
+     <div class="confirm-group">
+         <p>@Html.DisplayNameFor(x => x.Name)</p>
+         <input readonly asp-for="Name" />
+     </div>
+
+     <div class="confirm-group">
+         <p>@Html.DisplayNameFor(x => x.PostCode)</p>
+         <input readonly asp-for="PostCode" />
+     </div>
+
+    <div class="confirm-group">
+        <p>@Html.DisplayNameFor(x => x.City)</p>
+        <input readonly asp-for="City" />
+    </div>
+
+     <div class="confirm-group">
+         <p>@Html.DisplayNameFor(x => x.State)</p>
+         <input readonly asp-for="State" />
+     </div>
+
+    <div class="confirm-group">
+        <p>@Html.DisplayNameFor(x => x.Address)</p>
+        <input readonly asp-for="Address" />
+    </div>
+
+    <div class="confirm-group">
+        <p>@Html.DisplayNameFor(x => x.TFN)</p>
+        <input readonly asp-for="TFN" />
+    </div>
+
+    <div class="confirm-group">
+        <p>@Html.DisplayNameFor(x => x.Mobile)</p>
+        <input readonly asp-for="Mobile" />
+    </div>
+
+
+    <div class="button-clump">
+        <a class="button profile-link"  asp-action="EditPassword">Change Password</a>
+        <a class="button profile-link"  asp-action="EditProfile">Edit Profile</a>
+    </div>
+
+ </div>

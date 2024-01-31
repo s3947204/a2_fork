@@ -1,0 +1,44 @@
+﻿.home{
+    display: flex;
+    height: 100%;
+    width: 100%;
+  
+   
+}
+main{
+    padding: 2px;
+}
+
+
+
+
+.content {
+    width: 80%;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+.content span{
+    flex-grow: 1;
+    display: flex;
+    align-items: end;
+    font-size: 1.3rem;
+    
+}
+.content p{
+    font-size: 1.2rem;
+    line-height: 1.4;
+}
+
+
+
+.image {
+    background-image: url(../main.jpg);
+    background-repeat: no-repeat, repeat;
+    background-size: cover;
+    width: 50%;
+
+}

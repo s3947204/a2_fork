@@ -1,0 +1,72 @@
+﻿@using X.PagedList
+@using X.PagedList.Mvc.Core
+@using X.PagedList.Web.Common
+@using Utilities
+@model StatementViewModel
+@{
+    ViewData["Title"] = "Statement";
+    String accountType = Util.ConvertAccountTypeForDisplay(Model.AccountViewModel.Account.AccountType);
+    bool transactionExists = Model.Transactions.Count > 0;
+}
+
+
+@if (transactionExists)
+{
+    <h1>Account: @Model.AccountViewModel.Account.AccountNumber<span>(@accountType)</span></h1>
+
+    <h3>
+        Balance: @Html.DisplayFor(x => x.AccountViewModel.Balance)
+    </h3>
+
+    <table style="min-width: 50%; width: 80%; margin-top: 20px;">
+        <tr>
+            <th>@Html.DisplayNameFor(x => x.Transactions.First().TransactionID)</th>
+            <th>@Html.DisplayNameFor(x => x.Transactions.First().TransactionType)</th>
+            <th>@Html.DisplayNameFor(x => x.Transactions.First().AccountNumber)</th>
+            <th>@Html.DisplayNameFor(x => x.Transactions.First().DestinationAccountNumber)</th>
+            <th>@Html.DisplayNameFor(x => x.Transactions.First().Amount)</th>
+            <th>@Html.DisplayNameFor(x => x.Transactions.First().Comment)</th>
+            <th>@Html.DisplayNameFor(x => x.Transactions.First().TransactionTimeUtc)</th>
+
+        </tr>
+        @foreach (Transaction transaction in Model.Transactions)
+        {
+            <tr>
+                <td>@Html.DisplayFor(x => transaction.TransactionID)</td>
+                <td>@Util.ConvertTransactionTypeForDisplay(transaction.TransactionType)</td>
+                <td>@Html.DisplayFor(x => transaction.AccountNumber)</td>
+                <td>@Html.DisplayFor(x => transaction.DestinationAccountNumber)</td>
+                <td>@Html.DisplayFor(x => transaction.Amount)</td>
+                <td>@Html.DisplayFor(x => transaction.Comment)</td>
+                @{
+                    transaction.TransactionTimeUtc = transaction.TransactionTimeUtc.ToLocalTime();
+                }
+                <td>@Html.DisplayFor(x => transaction.TransactionTimeUtc)</td>
+
+            </tr>
+        }
+    </table>
+
+    @Html.PagedListPager(Model.Transactions, page => Url.Action("ShowStatement", new
+        {
+            accountNumber = Model.AccountViewModel.Account.AccountNumber,
+            page = page
+
+        }),
+        new PagedListRenderOptions
+        {
+            LiElementClasses = new[] { "page-item" },
+            PageClasses = new[] { "page-link" }
+        })
+}
+else
+{
+    <h1>No transactions on account with account number @Model.AccountViewModel.Account.AccountNumber<span>(@accountType)</span></h1>
+}
+
+
+
+@section PageCss {
+    <link rel="stylesheet" href="~/css/Table.css">
+    <link rel="stylesheet" href="~/css/pagination.css">
+}

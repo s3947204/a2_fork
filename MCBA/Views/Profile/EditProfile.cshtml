@@ -1,0 +1,75 @@
+﻿@model Customer
+
+@{
+    ViewData["Title"] = "Edit Profile";
+}
+
+<h1>Edit Profile</h1>
+
+<form asp-controller="Profile" asp-action="EditProfile" method="post">
+    <input type="hidden" asp-for="CustomerID" />
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="PostCode"></label>
+        <input asp-for="PostCode" class="form-control" />
+        <span asp-validation-for="PostCode" class="text-danger"></span>
+    </div>
+
+
+    <div class="form-group">
+        <label asp-for="City"></label>
+        <input asp-for="City" class="form-control" />
+        <span asp-validation-for="City" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="State"></label>
+        <select asp-for="State">
+            <option selected value="">Don't want to disclose</option>
+            <option value="VIC">VIC</option>
+            <option value="NSW">NSW</option>
+            <option value="QLD">QLD</option>
+            <option value="WA">WA</option>
+            <option value="SA">SA</option>
+            <option value="TAS">TAS</option>
+            <option value="NT">NT</option>
+            <option value="ACT">ACT</option>
+        </select>
+        <span asp-validation-for="State" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Address"></label>
+        <input asp-for="Address" class="form-control" />
+        <span asp-validation-for="Address" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="TFN"></label>
+        <input asp-for="TFN" class="form-control" />
+        <span asp-validation-for="TFN" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Mobile"></label>
+        <input asp-for="Mobile" class="form-control" />
+        <span asp-validation-for="Mobile" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Edit" class="button" />
+        @Html.ValidationMessage("EditProfileFailed", new { @class = "text-danger" })
+    </div>
+
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,62 @@
+﻿@using Data.Models
+@model List<Customer>
+@{
+    ViewData["Title"] = "Customers";
+    var customerExists = Model.Count > 0;
+}
+
+@if (customerExists)
+{
+    <h1>Customers</h1>
+    <table style="min-width: 50%; width: 100%; ">
+        <tr>
+             <th>@Html.DisplayNameFor(x => x.First().CustomerID)</th>
+             <th>@Html.DisplayNameFor(x => x.First().Name)</th>
+             <th>@Html.DisplayNameFor(x => x.First().TFN)</th>
+             <th>@Html.DisplayNameFor(x => x.First().Address)</th>
+             <th>@Html.DisplayNameFor(x => x.First().City)</th>
+             <th>@Html.DisplayNameFor(x => x.First().State)</th>
+             <th>@Html.DisplayNameFor(x => x.First().PostCode)</th>
+             <th>@Html.DisplayNameFor(x => x.First().Mobile)</th>
+             <th>@Html.DisplayNameFor(x => x.First().Locked)</th>
+             <th></th>
+             <th></th>
+        </tr>
+        @foreach(var customer in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(x => customer.CustomerID)</td>
+                <td>@Html.DisplayFor(x => customer.Name)</td>
+                <td>@Html.DisplayFor(x => customer.TFN)</td>
+                <td>@Html.DisplayFor(x => customer.Address)</td>
+                <td>@Html.DisplayFor(x => customer.City)</td>
+                <td>@Html.DisplayFor(x => customer.State)</td>
+                <td>@Html.DisplayFor(x => customer.PostCode)</td>
+                <td>@Html.DisplayFor(x => customer.Mobile)</td>
+                <td>@customer.Locked</td>
+                <td><a class="button" asp-action="Edit" asp-route-id="@customer.CustomerID">Edit</a></td>
+
+                @if (@customer.Locked)
+                {
+                    <td><a style="background-color: #D98129;" class="button" asp-action="Unlock" asp-route-id="@customer.CustomerID">Unlock</a></td>
+                }
+                else
+                {
+                    <td><a style="background-color: #E5000D;" class="button" asp-action="Lock" asp-route-id="@customer.CustomerID">Lock</a></td>
+                }
+            </tr>
+        }
+
+
+    </table>
+}
+else
+{
+    <h1>No customers to show</h1>
+}
+
+
+
+@section PageCss {
+    <link rel="stylesheet" href="~/css/Table.css">
+}

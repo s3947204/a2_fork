@@ -1,0 +1,57 @@
+﻿@using Microsoft.AspNetCore.Http
+@{
+    var isLoggedIn = Context.Session.GetInt32(nameof(Customer.CustomerID)).HasValue;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/site.css">
+    @await RenderSectionAsync("PageCss", false)
+</head>
+<body>
+    <nav>
+        
+        <a asp-controller="Home" asp-action="Index">MCBA</a>
+
+        
+        <div class="nav-link">
+        
+            @if (isLoggedIn)
+            {
+                <a asp-controller="Deposit" asp-action="Deposit">Deposit</a>
+                <a asp-controller="Withdraw" asp-action="Withdraw">Withdraw</a>
+                <a asp-controller="Transfer" asp-action="Transfer">Transfer</a>
+                <a asp-controller="Customer" asp-action="Index">My Statement</a>
+                <a asp-controller="Profile" asp-action="Index">My Profile</a>
+                <a asp-controller="BillPay" asp-action="Index">Bill Pay</a>
+                <a asp-controller="Login" asp-action="Logout">Logout</a>
+
+
+            }
+            else
+            {
+                <a asp-controller="Login" asp-action="Login">Login</a>
+            }
+
+        </div>
+
+    </nav>
+
+    <main>
+        @RenderBody()
+    </main>
+
+
+    <footer>
+        <div>
+            &copy; 2024 - MCBA 
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    @await RenderSectionAsync("Scripts", false)
+</body>
+</html>

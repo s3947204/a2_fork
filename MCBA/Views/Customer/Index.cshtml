@@ -1,0 +1,33 @@
+﻿@using Utilities
+@model IEnumerable<AccountViewModel>
+
+@{
+    ViewData["Title"] = "Accounts";
+    var name = Context.Session.GetString(nameof(Customer.Name)).Split(" ");
+    var accountPlurarity = Model.Count() > 1 ? "Accounts" : "Account";
+
+}
+
+<h3 style="margin: 10px 0px 20px 0px;">@name[0]'s @accountPlurarity,</h3>
+<table>
+    <tr>
+        <th>@Html.DisplayNameFor(x => x.First().Account.AccountNumber)</th>
+        <th>@Html.DisplayNameFor(x => x.First().Account.AccountType)</th>
+        <th>@Html.DisplayNameFor(x => x.First().Balance)</th>
+        <th></th>
+    </tr>
+    @foreach(AccountViewModel accountViewModel in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(x => accountViewModel.Account.AccountNumber)</td>
+            <td>@Util.ConvertAccountTypeForDisplay(accountViewModel.Account.AccountType)</td>
+            <td>@Html.DisplayFor(x => accountViewModel.Balance)</td>
+            <td><a class="main-page-button button" asp-controller="Statement" asp-action="ShowStatement" asp-route-accountNumber="@accountViewModel.Account.AccountNumber">View Transactions</a></td>
+
+        </tr>
+    }
+</table>
+
+@section PageCss {
+    <link rel="stylesheet" href="~/css/Table.css">
+}

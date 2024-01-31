@@ -1,0 +1,76 @@
+﻿@using Utilities
+@model List<BillPay>
+@{
+    ViewData["Title"] = "BillPay";
+}
+
+<h1>Bill Pay</h1>
+
+@if(Model.Count() == 0)
+{
+    <h3>No bill pay created</h3>
+}
+else
+{
+    <table style="width: 80%">
+        <tr>
+            <th>@Html.DisplayNameFor(x => x.First().BillPayID)</th>
+            <th>@Html.DisplayNameFor(x => x.First().AccountNumber)</th>
+            <th>@Html.DisplayNameFor(x => x.First().PayeeID)</th>
+            <th>@Html.DisplayNameFor(x => x.First().Amount)</th>
+            <th>@Html.DisplayNameFor(x => x.First().ScheduleTimeUTC)</th>
+            <th>@Html.DisplayNameFor(x => x.First().Period)</th>
+            <th>@Html.DisplayNameFor(x => x.First().Status)</th>
+            <th></th>
+            <th></th>
+        </tr>
+        @foreach (BillPay billpay in Model)
+        {
+            
+            var isCanceled = billpay.Status == "C";
+            var isFailed = billpay.Status == "F";
+            
+
+            <tr>
+                <td>@Html.DisplayFor(x => billpay.BillPayID)</td>
+                <td>@Html.DisplayFor(x => billpay.AccountNumber)</td>
+                <td>@Html.DisplayFor(x => billpay.Payee.Name)</td>
+                <td>@Html.DisplayFor(x => billpay.Amount)</td>
+                @{
+                    billpay.ScheduleTimeUTC = billpay.ScheduleTimeUTC.ToLocalTime();
+                }
+                <td>@Html.DisplayFor(x => billpay.ScheduleTimeUTC)</td>
+                <td>@Util.ConvertPeriodForDisplay(billpay.Period)</td>
+                <td>@Util.ConvertStatusForDisplay(billpay.Status)</td>
+                @if (isFailed || isCanceled)
+                {
+                    <td><a asp-action="Retry" asp-route-id="@billpay.BillPayID" class="retry button">Retry</a></td>
+                }
+                else
+                {
+                    <td></td>
+                }
+
+
+                
+                @if (isCanceled)
+                {
+                    <td><a asp-action="Delete" asp-route-id="@billpay.BillPayID" class="delete button">Delete</a></td>
+                }
+                else
+                {
+                    <td><a asp-action="Cancel" asp-route-id="@billpay.BillPayID" class="cancel button">Cancel</a></td>
+                }
+
+            </tr>
+        }
+    </table>
+
+}
+
+<a class="button" style="margin-top: 20px" asp-action="CreateBillPay">Create</a>
+
+
+@section PageCss {
+    <link rel="stylesheet" href="~/css/Table.css">
+}

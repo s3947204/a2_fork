@@ -1,0 +1,24 @@
+﻿table {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.20);
+    text-align: left;
+    width: 50%;
+}
+
+tr:first-child {
+    border-bottom: 1px solid black;
+    background-color: #009879;
+}
+
+tr:nth-child(n+2) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.20);
+}
+
+th, td {
+    padding: 1rem;
+}
+
+.main-page-button {
+    text-decoration: none;
+    width: 80%;
+    padding: 10px 10px;
+}

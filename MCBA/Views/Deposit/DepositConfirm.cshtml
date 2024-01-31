@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewData["Title"] = "Confirm";
+}
+
+<h1>Confirm Deposit</h1>
+
+@{
+    await Html.RenderPartialAsync("_DepositWithdrawConfirm");
+}
+
+<form asp-controller="Deposit" asp-action="DepositConfirmPost" method="post">
+    <div class="button-clump">
+        <a asp-controller="Deposit" asp-action="Deposit" class="back">Back</a>
+        <input class="confirm button" type="submit" value="Confirm" />
+
+    </div>
+
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,46 @@
+﻿@using Microsoft.AspNetCore.Http
+@{
+    var username = Context.Session.GetString(nameof(AdminWeb.Models.Login.Username));
+    var isLoggedIn = username != null;
+
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/site.css">
+    @await RenderSectionAsync("PageCss", false)
+</head>
+<body>
+    <nav>
+
+        <p>MCBA-Admin</p>
+        <div class="nav-link">
+
+            @if (isLoggedIn)
+            {
+                <a style="text-decoration: none" asp-controller="Admin" asp-action="LogOut">Log Out</a>
+
+            }
+            
+        </div>
+
+    </nav>
+
+    <main>
+        @RenderBody()
+    </main>
+
+
+    <footer>
+        <div>
+            &copy; 2024 - MCBA 
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    @await RenderSectionAsync("Scripts", false)
+</body>
+</html>

@@ -1,0 +1,187 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+    blockquote:before, blockquote:after,
+    q:before, q:after {
+        content: '';
+        content: none;
+    }
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    justify-content: space-between;
+    font-family: sans-serif;
+}
+
+nav, footer, main {
+    padding: 1rem 5rem;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 5rem;
+    background-color: #fff;
+    box-shadow: 0px 0px 2px black;
+}
+
+
+
+nav p {
+    color: black;
+    font-size: 1.5rem;
+}
+
+nav .nav-link a {
+    font-size: 1rem;
+    color: #414A4C;
+}
+
+nav .nav-link {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+
+main {
+    flex-grow: 1;
+}
+
+
+footer {
+    display: flex;
+    padding: 1rem 5rem;
+    box-shadow: 0px 0px 1px black;
+}
+
+
+footer div {
+    color: darkslategray;
+}
+
+form, .confirm-clump, .form-group, .confirm-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+
+input {
+    -webkit-appearance: none;
+    appearance: none;
+    border: 1px solid black;
+    width: 250px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.button, .back {
+    color: black;
+    background-color: azure;
+    font-size: 1rem;
+    padding: 10px 50px;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: antiquewhite
+}
+
+.button:active {
+    transform: scale(0.9);
+}
+
+h1 {
+    font-weight: bold;
+    font-size: 2rem;
+    padding-bottom: 15px;
+}
+
+.text-danger {
+    color: red;
+}
+
+select {
+    border: 1px solid black;
+    width: 250px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+
+
+.profile-link {
+    text-decoration: none;
+}
+
+
+input[readonly] {
+    opacity: 0.6;
+    border: gray 1px solid;
+    cursor: not-allowed;
+}
+
+
+

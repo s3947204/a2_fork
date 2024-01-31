@@ -1,0 +1,26 @@
+﻿@model WithdrawViewModel
+
+@{
+    ViewData["Title"] = "Confirm";
+}
+
+<h1>Confirm Withdraw</h1>
+
+@{
+    await Html.RenderPartialAsync("_DepositWithdrawConfirm");
+}
+
+<form asp-controller="Withdraw" asp-action="WithdrawConfirmPost" method="post">
+    <div class="button-clump">
+        <a asp-controller="Withdraw" asp-action="Withdraw" class="back">Back</a>
+        <input class="confirm button" type="submit" value="Confirm" />
+
+    </div>
+
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

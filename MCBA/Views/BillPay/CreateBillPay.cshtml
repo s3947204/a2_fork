@@ -1,0 +1,69 @@
+﻿@model BillPayViewModel
+@{
+    ViewData["Title"] = "Create BillPay";
+}
+
+<h1>Create Bill Pay</h1>
+
+<form asp-controller="BillPay" asp-action="CreateBillPay" method="post">
+    <input hidden asp-for="BillPay.Status" value="P"/>
+    <div class="form-group">
+        <label asp-for="BillPay.AccountNumber"></label>
+        <select asp-for="BillPay.AccountNumber">
+            @foreach (Account account in Model.Accounts)
+            {
+                <option value="@account.AccountNumber">@account.AccountNumber</option>
+            }
+        </select>
+        <span asp-validation-for="BillPay.AccountNumber" class="text-danger"></span>
+
+    </div>
+
+    <div class="form-group">
+        <label asp-for="BillPay.PayeeID"></label>
+        <select asp-for="BillPay.PayeeID">
+            @foreach (Payee payee in Model.Payees)
+            {
+                <option value="@payee.PayeeID">@payee.Name</option>
+            }
+        </select>
+        <span asp-validation-for="BillPay.PayeeID" class="text-danger"></span>
+
+    </div>
+
+    <div class="form-group">
+        <label asp-for="BillPay.Amount"></label>
+        <input asp-for="BillPay.Amount" class="form-control" />
+        <span asp-validation-for="BillPay.Amount" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="BillPay.ScheduleTimeUTC"></label>
+        <input asp-for="BillPay.ScheduleTimeUTC" class="form-control" />
+        <span asp-validation-for="BillPay.ScheduleTimeUTC" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="BillPay.Period"></label>
+        <select asp-for="BillPay.Period">
+            <option value="O">One off</option>
+            <option value="M">Monthy</option>
+        </select>
+        <span asp-validation-for="BillPay.Period" class="text-danger"></span>
+
+    </div>
+
+
+    <div class="form-group">
+        <input type="submit" value="Add" class="button" />
+    </div>
+</form>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+

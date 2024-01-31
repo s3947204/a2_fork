@@ -1,0 +1,30 @@
+﻿@model DepositViewModel;
+
+<div class="form-group">
+    <label asp-for="ChosenAccount"></label>
+    <select asp-for="ChosenAccount">
+        @foreach (Account account in Model.Accounts)
+        {
+            <option value="@account.AccountNumber">@account.AccountNumber</option>
+        }
+    </select>
+
+    <span asp-validation-for="ChosenAccount" class="text-danger"></span>
+
+
+</div>
+
+
+<div class="form-group">
+    <label asp-for="Amount"></label>
+    <input asp-for="Amount" class="form-control" />
+    <span asp-validation-for="Amount" class="text-danger"></span>
+</div>
+
+<div class="form-group">
+    <label asp-for="Comment"></label>
+    <input asp-for="Comment" class="form-control" />
+    <span asp-validation-for="Comment" class="text-danger"></span>
+</div>
+
+
